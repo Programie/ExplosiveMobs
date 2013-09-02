@@ -1,0 +1,17 @@
+maxSpawnAmount: 100
+defaults:
+  enabled: true
+  power: 2
+  setFire: true
+  breakBlocks: true
+  triggeredByAny: false
+
+# You can add a configuration for each mob
+# Each configuration value will override the one specified in the "defaults" node
+#
+# mobs:
+#   Cow:
+#     enabled: false
+#   Sheep:
+#     power: 10
+#     setFire: false

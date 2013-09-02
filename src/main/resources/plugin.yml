@@ -1,0 +1,18 @@
+name: ExplosiveMobs
+version: 1.0
+description: 'Let mobs explode once they die'
+author: programie
+website: http://minearea.net
+main: net.minearea.explosivemobs.ExplosiveMobs
+commands:
+  spawnexplosivemob:
+    description: 'Spawn an explosive mob in front of you or another player'
+    usage: '/spawnexplosivemob <mob>:<type> <amount> <targetplayer>'
+    permission: 'explosivemob.spawn'
+permissions:
+  explosivemob.spawn:
+    description: 'Allows you to spawn an explosive mob'
+    default: op
+  explosivemob.spawn.target:
+    description: 'Allows you to spawn an explosive mob in front of another player'
+    default: op
