@@ -1,13 +1,28 @@
+# The maximum amount of mobs which can be spawned at the same time using the /spawnexplosivemob command
 maxSpawnAmount: 100
+
+# Default configurations for all mobs
 defaults:
+  # Set to true to let mobs explode once they die
+  # Note: This does not affect mobs spawned using the /spawnexplosivemob command!
   enabled: true
+
+  # The power of the explosion
   power: 2
+
+  # Set to true to set exploded blocks on fire
   setFire: true
+
+  # Set to true to destroy blocks on explosion
   breakBlocks: true
+
+  # Set to true to even let mobs explode if the death was not triggered by the player (e.g. other explosion, fire, other mobs, etc.)
   triggeredByAny: false
 
 # You can add a configuration for each mob
 # Each configuration value will override the one specified in the "defaults" node
+# In this way you can, for example, globally disable explosive mobs and just enable it for cows
+# Or another example: Change the power of only one mob type
 #
 # mobs:
 #   Cow:
