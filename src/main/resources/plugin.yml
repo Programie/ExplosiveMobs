@@ -10,14 +10,14 @@ commands:
     usage: '/spawnexplosivemob <mob>:<type> <amount> <targetplayer>'
     permission: 'explosivemob.spawn'
 permissions:
-  explosivemob.*:
+  explosivemobs.*:
     description: 'Gives access to all features'
     children:
-      explosivemob.spawn: true
-      explosivemob.spawn.target: true
-  explosivemob.spawn:
+      explosivemobs.spawn: true
+      explosivemobs.spawn.target: true
+  explosivemobs.spawn:
     description: 'Allows you to spawn an explosive mob'
     default: op
-  explosivemob.spawn.target:
+  explosivemobs.spawn.target:
     description: 'Allows you to spawn an explosive mob in front of another player'
     default: op
