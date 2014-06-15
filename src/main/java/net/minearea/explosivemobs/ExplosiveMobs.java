@@ -97,17 +97,22 @@ public class ExplosiveMobs extends JavaPlugin implements Listener {
                 }
             }
 
+            // Fixes some "Possible NullPointerException" warnings
+            if (type == null) {
+                return true;
+            }
+
             for (int number = 0; number < amount; number++) {
                 Entity entity = target.getWorld().spawnEntity(target.getLocation(), type);
                 if (entity != null) {
                     switch (type) {
                         case CREEPER:
-                            if (subType.toLowerCase() == "powered") {
+                            if (subType != null && subType.toLowerCase().equals("powered")) {
                                 ((Creeper) entity).setPowered(true);
                             }
                             break;
                         case HORSE:
-                            if (!subType.isEmpty()) {
+                            if (subType != null && !subType.isEmpty()) {
                                 try {
                                     Horse.Variant variant = Horse.Variant.valueOf(subType.toUpperCase());
                                     if (variant != null) {
