@@ -18,6 +18,8 @@ See the *Build* step bellow for more details.
 
 ## Build
 
+[![Build Status](https://travis-ci.org/Programie/ExplosiveMobs.png?branch=master)](https://travis-ci.org/Programie/ExplosiveMobs)
+
 You can build the project in the following 2 steps:
 
  * Check out the repository
