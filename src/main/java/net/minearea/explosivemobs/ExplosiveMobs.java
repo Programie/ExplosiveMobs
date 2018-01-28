@@ -3,21 +3,13 @@ package net.minearea.explosivemobs;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Creeper;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Horse;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.Metrics;
-
-import java.io.IOException;
 
 public class ExplosiveMobs extends JavaPlugin implements Listener {
     @Override
@@ -27,13 +19,6 @@ public class ExplosiveMobs extends JavaPlugin implements Listener {
 
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(this, this);
-
-        try {
-            Metrics metrics = new Metrics(this);
-            metrics.start();
-        } catch (IOException exception) {
-            // Failed to submit the stats :-(
-        }
     }
 
     @Override
@@ -58,8 +43,8 @@ public class ExplosiveMobs extends JavaPlugin implements Listener {
                 return false;
             }
 
-            if (args.length >= 1)// Type specified
-            {
+            // Type specified
+            if (args.length >= 1) {
                 String[] typeParts = args[0].split(":");
                 type = EntityType.fromName(typeParts[0]);
                 if (type == null) {
@@ -71,8 +56,9 @@ public class ExplosiveMobs extends JavaPlugin implements Listener {
                     subType = typeParts[1];
                 }
             }
-            if (args.length >= 2)// Amount specified
-            {
+
+            // Amount specified
+            if (args.length >= 2) {
                 amount = Integer.parseInt(args[1]);
                 if (amount < 1) {
                     sender.sendMessage("Amount must be 1 or greater!");
@@ -83,8 +69,9 @@ public class ExplosiveMobs extends JavaPlugin implements Listener {
                     sender.sendMessage("Mob spawning limit of " + getConfig().getInt("maxSpawnAmount") + " reached!");
                 }
             }
-            if (args.length >= 3)// Target player specified
-            {
+
+            // Target player specified
+            if (args.length >= 3) {
                 if (!sender.hasPermission("explosivemobs.spawn.targetplayer")) {
                     sender.sendMessage("Permission denied!");
                     return true;
