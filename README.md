@@ -1,5 +1,7 @@
 # ExplosiveMobs
 
+![](screenshot.png)
+
 A Minecraft Bukkit plugin which let mobs explode once they die
 
 It is possible to configure the plugin to just have explosive mobs if they are spawned using the */spawnexplosivemob* command or simply every time a mob dies.
