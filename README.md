@@ -11,9 +11,9 @@ And the funny part: Players with the correct permissions can even spawn explosiv
 
 ## Installation
 
-Currently there is no jar file available. You have to build the plugin yourself.
+You can get latest jar file from [bukkit.org](https://dev.bukkit.org/projects/explosivemobs).
 
-See the *Build* step bellow for more details.
+You may also check out the project from the repository and build it yourself (See Build section).
 
 
 ## Build
