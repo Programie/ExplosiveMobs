@@ -1,4 +1,4 @@
-package net.minearea.explosivemobs;
+package com.selfcoders.explosivemobs;
 
 import org.bukkit.Location;
 import org.bukkit.command.Command;
