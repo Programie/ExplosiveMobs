@@ -2,7 +2,7 @@
 
 ![](screenshot.png)
 
-A Minecraft Bukkit plugin which let mobs explode once they die
+A Minecraft Bukkit plugin which let mobs explode once they die.
 
 It is possible to configure the plugin to just have explosive mobs if they are spawned using the */spawnexplosivemob* command or simply every time a mob dies.
 
@@ -13,9 +13,9 @@ And the funny part: Players with the correct permissions can even spawn explosiv
 
 ## Installation
 
-You can get latest jar file from [bukkit.org](https://dev.bukkit.org/projects/explosivemobs).
+You can get the latest release from [bukkit.org](https://dev.bukkit.org/projects/explosivemobs) or [GitHub](https://github.com/Programie/ExplosiveMobs/releases/latest).
 
-You may also check out the project from the repository and build it yourself (See Build section).
+You may also check out the project from the repository and build it yourself (See Build section bellow).
 
 
 ## Build
@@ -27,7 +27,7 @@ You can build the project in the following 2 steps:
  * Check out the repository
  * Build the jar file using maven: *mvn clean package*
 
-**Note:** JDK 1.7 and Maven is required to build the project!
+**Note:** JDK 1.8 and Maven is required to build the project!
 
 
 ## Configuration
