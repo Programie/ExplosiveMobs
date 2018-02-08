@@ -1,5 +1,5 @@
 name: ExplosiveMobs
-version: 1.0
+version: ${project.version}
 description: 'Let mobs explode once they die'
 author: programie
 website: https://selfcoders.com
