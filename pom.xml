@@ -7,7 +7,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Explosive Mobs</name>
+    <name>ExplosiveMobs</name>
     <description>Let mobs explode once they die</description>
     <url>https://selfcoders.com</url>
 
@@ -45,6 +45,15 @@
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <finalName>${project.name}</finalName>
                 </configuration>
             </plugin>
         </plugins>
