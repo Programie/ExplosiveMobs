@@ -1,15 +1,12 @@
 # ExplosiveMobs
 
-![](screenshot.png)
-
 A Minecraft Bukkit plugin which lets mobs explode once they die.
 
-It is possible to configure the plugin to just have explosive mobs if they are spawned using the */spawnexplosivemob* command or simply every time a mob dies.
+![](screenshot.png)
 
-You can also define per mob configurations. For example you only want to have explosive sheep, but any other mob should just die on death without any explosion.
-
-And the funny part: Players with the correct permissions can even spawn explosive mobs in front of other players!
-
+[![Build Status](https://travis-ci.org/Programie/ExplosiveMobs.svg?branch=master)](https://travis-ci.org/Programie/ExplosiveMobs)
+[![Issues](https://img.shields.io/github/issues/Programie/ExplosiveMobs.svg)](https://github.com/Programie/ExplosiveMobs/issues)
+[![Release](https://img.shields.io/github/release/Programie/ExplosiveMobs.svg)](https://github.com/Programie/ExplosiveMobs/releases/latest)
 
 ## Installation
 
@@ -19,8 +16,6 @@ You may also check out the project from the repository and build it yourself (Se
 
 
 ## Build
-
-[![Build Status](https://travis-ci.org/Programie/ExplosiveMobs.png?branch=master)](https://travis-ci.org/Programie/ExplosiveMobs)
 
 You can build the project in the following 2 steps:
 
@@ -32,7 +27,11 @@ You can build the project in the following 2 steps:
 
 ## Configuration
 
-See [config.yml](src/main/resources/config.yml)
+It is possible to configure the plugin to just have explosive mobs if they are spawned using the */spawnexplosivemob* command or simply every time a mob dies.
+
+You can also define per mob configurations. For example you only want to have explosive sheep, but any other mob should just die without any explosion.
+
+For more details, see [config.yml](src/main/resources/config.yml).
 
 
 ## Permissions
