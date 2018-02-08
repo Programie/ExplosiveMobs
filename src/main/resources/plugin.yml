@@ -1,8 +1,8 @@
 name: ExplosiveMobs
 version: ${project.version}
-description: 'Let mobs explode once they die'
+description: '${project.description}'
 author: programie
-website: https://selfcoders.com
+website: ${project.url}
 main: com.selfcoders.explosivemobs.ExplosiveMobs
 commands:
   spawnexplosivemob:

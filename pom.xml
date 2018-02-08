@@ -8,6 +8,7 @@
     <packaging>jar</packaging>
 
     <name>Explosive Mobs</name>
+    <description>Let mobs explode once they die</description>
     <url>https://selfcoders.com</url>
 
     <properties>
