@@ -9,7 +9,7 @@
 
     <name>ExplosiveMobs</name>
     <description>Let mobs explode once they die</description>
-    <url>https://selfcoders.com</url>
+    <url>https://github.com/Programie/ExplosiveMobs</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
