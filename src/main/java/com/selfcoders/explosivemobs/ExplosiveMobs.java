@@ -1,6 +1,9 @@
 package com.selfcoders.explosivemobs;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
@@ -29,98 +32,97 @@ public class ExplosiveMobs extends JavaPlugin implements Listener {
                 return true;
             }
 
-            if (!sender.hasPermission("explosivemobs.spawn")) {
-                sender.sendMessage("Permission denied!");
-                return true;
-            }
-
-            EntityType type = null;
-            String subType = null;
-            int amount = 1;
-            Player target = (Player) sender;
-
             if (args.length == 0) {
                 return false;
             }
 
-            // Type specified
-            if (args.length >= 1) {
-                String[] typeParts = args[0].split(":");
-                type = EntityType.fromName(typeParts[0]);
-                if (type == null) {
-                    sender.sendMessage("Invalid mob type!");
-                    return true;
-                }
-
-                if (typeParts.length >= 2) {
-                    subType = typeParts[1];
-                }
-            }
-
-            // Amount specified
-            if (args.length >= 2) {
-                amount = Integer.parseInt(args[1]);
-                if (amount < 1) {
-                    sender.sendMessage("Amount must be 1 or greater!");
-                    return true;
-                }
-                if (getConfig().getInt("maxSpawnAmount", 0) != 0 && amount > getConfig().getInt("maxSpawnAmount")) {
-                    amount = getConfig().getInt("maxSpawnAmount");
-                    sender.sendMessage("Mob spawning limit of " + getConfig().getInt("maxSpawnAmount") + " reached!");
-                }
-            }
-
-            // Target player specified
-            if (args.length >= 3) {
-                if (!sender.hasPermission("explosivemobs.spawn.targetplayer")) {
-                    sender.sendMessage("Permission denied!");
-                    return true;
-                }
-
-                target = getServer().getPlayer(args[2]);
-                if (target == null) {
-                    sender.sendMessage("Target player not found!");
-                    return true;
-                }
-            }
-
-            // Fixes some "Possible NullPointerException" warnings
-            if (type == null) {
-                return true;
-            }
-
-            for (int number = 0; number < amount; number++) {
-                Entity entity = target.getWorld().spawnEntity(target.getLocation(), type);
-                if (entity != null) {
-                    switch (type) {
-                        case CREEPER:
-                            if (subType != null && subType.toLowerCase().equals("powered")) {
-                                ((Creeper) entity).setPowered(true);
-                            }
-                            break;
-                        case HORSE:
-                            if (subType != null && !subType.isEmpty()) {
-                                try {
-                                    Horse.Variant variant = Horse.Variant.valueOf(subType.toUpperCase());
-                                    if (variant != null) {
-                                        ((Horse) entity).setVariant(variant);
-                                    }
-                                } catch (IllegalArgumentException exception) {
-                                    sender.sendMessage("Invalid horse variant: " + subType);
-                                    return true;
-                                }
-                            }
-                            break;
-                    }
-                    entity.setMetadata("isPlayerSpawnedExplosiveMob", new FixedMetadataValue(this, true));
-                }
-            }
-            sender.sendMessage("Spawned " + amount + " " + type.getName() + "(s) fed with TNT");
-
+            spawnExplosiveMobCommand((Player) sender, args);
             return true;
         }
 
         return false;
+    }
+
+    private void spawnExplosiveMobCommand(Player player, String[] args) {
+        if (!player.hasPermission("explosivemobs.spawn")) {
+            player.sendMessage(ChatColor.RED + "You do not have the required permissions for this command!");
+            return;
+        }
+
+        Player target = player;
+        String subType = null;
+        int amount = 1;
+
+        String[] typeParts = args[0].split(":");
+        EntityType type = EntityType.fromName(typeParts[0]);
+        if (type == null) {
+            player.sendMessage(ChatColor.RED + "Invalid mob type!");
+            return;
+        }
+
+        if (typeParts.length >= 2) {
+            subType = typeParts[1];
+        }
+
+        // Amount specified
+        if (args.length >= 2) {
+            amount = Integer.parseInt(args[1]);
+            if (amount < 1) {
+                player.sendMessage(ChatColor.RED + "Amount must be 1 or greater!");
+                return;
+            }
+
+            int maxSpawnAmount = getConfig().getInt("maxSpawnAmount", 0);
+            if (maxSpawnAmount > 0 && amount > maxSpawnAmount) {
+                amount = maxSpawnAmount;
+                player.sendMessage("Mob spawning limit of " + maxSpawnAmount + " reached!");
+            }
+        }
+
+        // Target player specified
+        if (args.length >= 3) {
+            if (!player.hasPermission("explosivemobs.spawn.targetplayer")) {
+                player.sendMessage(ChatColor.RED + "You do not have the required permissions for this command!");
+                return;
+            }
+
+            target = Bukkit.getPlayer(args[2]);
+            if (target == null) {
+                player.sendMessage(ChatColor.RED + "Target player not found!");
+                return;
+            }
+        }
+
+        for (int number = 0; number < amount; number++) {
+            try {
+                spawnExplosiveMob(target.getWorld(), target.getLocation(), type, subType);
+            } catch (IllegalArgumentException exception) {
+                player.sendMessage(ChatColor.RED + "Invalid sub type: " + subType);
+                return;
+            }
+        }
+
+        player.sendMessage("Spawned " + amount + " " + type.getName() + "(s) fed with TNT");
+    }
+
+    private void spawnExplosiveMob(World world, Location location, EntityType type, String subType) {
+        Entity entity = world.spawnEntity(location, type);
+        if (entity != null) {
+            switch (type) {
+                case CREEPER:
+                    if (subType != null && subType.toLowerCase().equals("powered")) {
+                        ((Creeper) entity).setPowered(true);
+                    }
+                    break;
+                case HORSE:
+                    if (subType != null && !subType.isEmpty()) {
+                        ((Horse) entity).setVariant(Horse.Variant.valueOf(subType.toUpperCase()));
+                    }
+                    break;
+            }
+
+            entity.setMetadata("isPlayerSpawnedExplosiveMob", new FixedMetadataValue(this, true));
+        }
     }
 
     @EventHandler
