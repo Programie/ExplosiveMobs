@@ -9,7 +9,7 @@ A Minecraft Bukkit plugin which lets mobs explode once they die.
 
 ## Installation
 
-You can get the latest release from [bukkit.org](https://dev.bukkit.org/projects/explosivemobs) or [GitLab](https://gitlab.com/Programie/ExplosiveMobs/-/jobs/artifacts/master/raw/target/ExplosiveMobs.jar?job=release).
+You can get the latest release from [GitLab](https://gitlab.com/Programie/ExplosiveMobs/-/releases) and [CurseForge](https://www.curseforge.com/minecraft/bukkit-plugins/explosivemobs).
 
 You may also check out the project from the repository and build it yourself (See Build section bellow).
 
