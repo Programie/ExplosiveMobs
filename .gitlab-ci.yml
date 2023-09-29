@@ -1,7 +1,0 @@
-include:
-  - project: "Programie/Common"
-    file: "bukkit-plugins/gitlab-ci.yml"
-
-variables:
-  CURSEFORGE_PROJECT_ID: 286386
-  MODRINTH_PROJECT_ID: b1jrxobi
